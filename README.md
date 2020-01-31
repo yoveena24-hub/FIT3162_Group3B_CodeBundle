@@ -13,16 +13,16 @@ The following instructions will
 1. Pycharm - Python IDE for developers
 2. Github Account
 3. Latest python version
+4. R 
+5. RStudio - Integrated development environment for R
 
 **Installing**
 
-Install R studio for Windows/Mac OS, download the RStudio Desktop version on https://rstudio.com/products/rstudio/download/
 
-Install R for Windows on https://cran.r-project.org/bin/windows/base/ and for Mac OS on https://cran.r-project.org/bin/macosx/
 
-For further details and clarification for installing R and R studio for both Mac and Windows users, go to https://courses.edx.org/courses/UTAustinX/UT.7.01x/3T2014/56c5437b88fa43cf828bff5371c6a924/
+**Running the python program**
 
-**Running the interface**
+**Running the R program**
 
 **Built With**
 
