@@ -14,11 +14,9 @@ Note:
 - Each score value is classified as 'neutral', 'Low' or 'High'
 """
 import pandas as pd
-import sys
-sys.path.insert(0, '../../RedditUserTypes')
 
-import ActiveInactiveUsers
-import SentimentAnalysisOfActiveUsers
+from RedditUserTypes import ActiveInactiveUsers
+from RedditUserTypes import SentimentAnalysisOfActiveUsers
 
 import numpy as np
 
@@ -45,9 +43,9 @@ def createnewdf(df,type):
     df2 = df2.assign(Score_Of_Comments=classCommentScore)
     df2 = df2.assign(Score=postScoreList)
     if type == "train":
-        df2.to_csv("TrainingDataAttributes.csv")
+        df2.to_csv("Evaluation/TrainingAndTesting/TrainingDataAttributes.csv")
     else:
-        df2.to_csv("TestingDataAttributes.csv")
+        df2.to_csv("Evaluation/TrainingAndTesting/TestingDataAttributes.csv")
 
 def classOfScore(df):
     """
@@ -262,7 +260,7 @@ def sentimentAnalysisOfComments(df, post_id):
     :return ratio_comment_sentiment_score, classCommentScore: list of for sentiment of comments and score of
     comments after classification
     """
-    df_comments = pd.read_csv("../Preprocessing/preprocessed_comments.csv")
+    df_comments = pd.read_csv("Preprocessing/preprocessed_comments.csv")
 
     #using vader library for sentiment analysis
     from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -348,17 +346,15 @@ def first9monthUsers(last3monthUsers, df):
     """
     df2 = df[df['author'].isin(last3monthUsers) & (df['month'] >= 1) & (df['month'] <= 9)]
     df3 = df[df['author'].isin(last3monthUsers) & (df['month'] >= 10) & (df['month'] <= 12)]
-    df2.to_csv("trainingData.csv")
-    df3.to_csv("testingData.csv")
+    df2.to_csv("Evaluation/TrainingAndTesting/trainingData.csv")
+    df3.to_csv("Evaluation/TrainingAndTesting/testingData.csv")
 
 
 def main():
-    df = pd.read_csv('../Preprocessing/preprocessed_posts.csv')
+    df = pd.read_csv('Preprocessing/preprocessed_posts.csv')
     first9monthUsers(last3monthActiveUsers(df), df)
-    trainingDf = pd.read_csv("trainingData.csv")
-    testingDf = pd.read_csv("testingData.csv")
+    trainingDf = pd.read_csv("Evaluation/TrainingAndTesting/trainingData.csv")
+    testingDf = pd.read_csv("Evaluation/TrainingAndTesting/testingData.csv")
     createnewdf(trainingDf,"train")
     createnewdf(testingDf, "test")
 
-if __name__ == '__main__':
-    main()

@@ -28,9 +28,9 @@ def preprocess(filename, type):
     df = convertToLower(convertTime(deleteOtherLangPosts(deleteDuplicatedPosts(deleteEmptyPosts(filename)), type)),
                         type)
     if type == "posts":
-        df.to_csv('preprocessed_posts.csv')
+        df.to_csv('Preprocessing/preprocessed_posts.csv')
     else:
-        df.to_csv('preprocessed_comments.csv')
+        df.to_csv('Preprocessing/preprocessed_comments.csv')
 
 
 def deleteEmptyPosts(filename):
@@ -237,8 +237,5 @@ def joinList(df, type):
 def main():
     # preprocess("../SourceFiles/Dell.csv", 'posts')
     # preprocess("../SourceFiles/DellComments.csv", 'comments')
-    preprocess("../SourceFiles/laptops.csv", 'posts')
-    preprocess("../SourceFiles/laptopComments.csv", 'comments')
-
-if __name__ == '__main__':
-    main()
+    preprocess("SourceFiles/laptops.csv", 'posts')
+    preprocess("SourceFiles/laptopComments.csv", 'comments')

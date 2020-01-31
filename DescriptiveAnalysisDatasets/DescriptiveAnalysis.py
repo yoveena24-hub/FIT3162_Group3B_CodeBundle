@@ -73,19 +73,16 @@ def getstatistics(df,df2,df3,df4,df5,df6):
 
 
 def main():
-    df = pd.read_csv('../RedditUserTypes/ActiveUserDetails.csv')
-    df2 = pd.read_csv('../RedditUserTypes/InactiveUserDetails.csv')
+    df = pd.read_csv('RedditUserTypes/ActiveUserDetails.csv')
+    df2 = pd.read_csv('RedditUserTypes/InactiveUserDetails.csv')
     df_1 = groupByMonth(df)
-    df_1.to_csv("ActiveUserMonthDetails.csv")
+    df_1.to_csv("DescriptiveAnalysisDatasets/ActiveUserMonthDetails.csv")
     df_2= groupByMonth(df2)
-    df_2.to_csv("InactiveUserMonthDetails.csv")
-    dfs1 = pd.read_csv("../SourceFiles/Dell.csv")
-    dfs2= pd.read_csv("../Preprocessing/preprocessed_posts.csv")
-    dfs3 = pd.read_csv ("../RedditUserTypes/ActiveUserDetails.csv")
-    dfs4 = pd.read_csv("../RedditUserTypes/InactiveUserDetails.csv")
-    dfs5 = pd.read_csv("../RedditUserTypes/PotentialClientDetails.csv")
-    dfs6 = pd.read_csv("../RedditUserTypes/Influencers.csv")
+    df_2.to_csv("DescriptiveAnalysisDatasets/InactiveUserMonthDetails.csv")
+    dfs1 = pd.read_csv("SourceFiles/Dell.csv")
+    dfs2= pd.read_csv("Preprocessing/preprocessed_posts.csv")
+    dfs3 = pd.read_csv ("RedditUserTypes/ActiveUserDetails.csv")
+    dfs4 = pd.read_csv("RedditUserTypes/InactiveUserDetails.csv")
+    dfs5 = pd.read_csv("RedditUserTypes/PotentialClientDetails.csv")
+    dfs6 = pd.read_csv("RedditUserTypes/Influencers.csv")
     getstatistics(dfs1,dfs2,dfs3,dfs4,dfs5,dfs6)
-
-if __name__ == '__main__':
-    main()

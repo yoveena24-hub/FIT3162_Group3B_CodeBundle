@@ -1,6 +1,11 @@
 import pytest
 import pandas as pd
-import TrainingAndTestingDataAttributes
+
+import sys
+sys.path.insert(0, '../../')
+
+from Evaluation.TrainingAndTesting import TrainingAndTestingDataAttributes
+
 import numpy as np
 
 def testclassOfscore():

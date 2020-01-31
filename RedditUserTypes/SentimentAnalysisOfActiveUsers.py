@@ -80,7 +80,6 @@ def sentimentscoresComments(df, df_comments, hashtableClients):
         comment_id_list.append((df_comments['parent_id'][ind])[3:])
     df_comments['parent_id'] = comment_id_list
     df2 = df_comments[(df_comments['parent_id']).isin(post_id)]
-    # df2.to_csv('PotentialInfluencersComments.csv')
 
     #update the hashtable by appending the sentiment score of each comment of an author
     for ind in df.index:
@@ -153,7 +152,7 @@ def influencer(hashtableClients, df_comments):
     :param df_comments: data frame obtained from the preprocessed comments' dataset
     :return NIL:
     """
-    df = pd.read_csv('PotentialClientDetails.csv')
+    df = pd.read_csv('RedditUserTypes/PotentialClientDetails.csv')
 
     postsScoreList = []
     postInfluencer = []
@@ -212,7 +211,7 @@ def influencer(hashtableClients, df_comments):
     df1['category_id'] = category
     df1['brand_id'] = brand
     df1['name'] = userName
-    df1.to_csv('Influencers.csv',index=False)
+    df1.to_csv('RedditUserTypes/Influencers.csv',index=False)
 
 
 def positivityOfText(compound_score_list, value):
@@ -283,21 +282,19 @@ def potentialClientsFile(df):
     df1['category_id'] = category
     df1['brand_id'] = brand
     df1['name'] = userName
-    df1.to_csv('potentialClients.csv', index=False)
+    df1.to_csv('RedditUserTypes/potentialClients.csv', index=False)
 
     # creating csv file to be used to find influencers
     df2 = df[df['author'].isin(hashtable)]
     df2 = df2.drop(df2.columns[[0,1]], axis=1)
-    df2.to_csv('PotentialClientDetails.csv')
+    df2.to_csv('RedditUserTypes/PotentialClientDetails.csv')
 
     return hashtable
 
 
 def main():
-   df = pd.read_csv('ActiveUserDetails.csv')
-   df_comments = pd.read_csv('../Preprocessing/preprocessed_comments.csv')
+   df = pd.read_csv('RedditUserTypes/ActiveUserDetails.csv')
+   df_comments = pd.read_csv('Preprocessing/preprocessed_comments.csv')
    hashtable = potentialClientsFile(df)
    influencer(hashtable, df_comments)
 
-if __name__ == '__main__':
-    main()

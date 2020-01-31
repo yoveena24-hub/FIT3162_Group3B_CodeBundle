@@ -190,14 +190,11 @@ def activeUsersFile(hashtable, df):
     for ind in df2.index:
         influencerList.append(hashtable[df2['author'][ind]])
     df2['Influencer'] = influencerList
-    df2.to_csv('ActiveUserDetails.csv')
-    df3.to_csv('InactiveUserDetails.csv')
+    df2.to_csv('RedditUserTypes/ActiveUserDetails.csv')
+    df3.to_csv('RedditUserTypes/InactiveUserDetails.csv')
 
 
 def main():
-    df = pd.read_csv('../Preprocessing/preprocessed_posts.csv')
+    df = pd.read_csv('Preprocessing/preprocessed_posts.csv')
     hashtable = filteringActive(df)
     activeUsersFile(hashtable, df)
-
-if __name__ == '__main__':
-    main()
