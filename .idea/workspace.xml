@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="121dc15b-a08b-4143-b4c2-fabd2e437657" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/FIT3162_Group3B_CodeBundle.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/DescriptiveAnalysisDatasets/DescriptiveAnalysis.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/DescriptiveAnalysisDatasets/test_DescriptiveAnalysis.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Evaluation/MachineLearning/DellTestingDataAttributes.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Evaluation/MachineLearning/DellTrainingDataAttributes.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Evaluation/MachineLearning/LaptopsTestingDataAttributes.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Evaluation/MachineLearning/LaptopsTrainingDataAttributes.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Evaluation/MachineLearning/MachineLearningModels.Rmd" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Evaluation/TrainingAndTesting/TrainingAndTestingDataAttributes.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Evaluation/TrainingAndTesting/test_TrainingAndTestingDataAttributes.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Preprocessing/preprocess.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Preprocessing/testPreprocessfile.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Preprocessing/test_preprocess.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RedditUserTypes/ActiveInactiveUsers.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RedditUserTypes/SentimentAnalysisOfActiveUsers.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RedditUserTypes/test_ActiveInactiveUsers.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/SourceFiles/Dell.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/SourceFiles/DellComments.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/SourceFiles/laptopComments.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/SourceFiles/laptops.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/main.py" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="width" value="1065" />
+    <option name="height" value="1038" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FIT3162_Group3B_CodeBundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIT3162_Group3B_CodeBundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIT3162_Group3B_CodeBundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIT3162_Group3B_CodeBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="DescriptiveAnalysisDatasets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIT3162_Group3B_CodeBundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIT3162_Group3B_CodeBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Evaluation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIT3162_Group3B_CodeBundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIT3162_Group3B_CodeBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Evaluation" type="462c0819:PsiDirectoryNode" />
+              <item name="MachineLearning" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIT3162_Group3B_CodeBundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIT3162_Group3B_CodeBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Evaluation" type="462c0819:PsiDirectoryNode" />
+              <item name="TrainingAndTesting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIT3162_Group3B_CodeBundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIT3162_Group3B_CodeBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Preprocessing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIT3162_Group3B_CodeBundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIT3162_Group3B_CodeBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="RedditUserTypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIT3162_Group3B_CodeBundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIT3162_Group3B_CodeBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="SourceFiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="121dc15b-a08b-4143-b4c2-fabd2e437657" name="Default" comment="" />
+      <created>1580440224797</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580440224797</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960339" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+</project>

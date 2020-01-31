@@ -1,0 +1,251 @@
+---
+title: "Machine Learning Models"
+author: "Vihara Kadawathaarachchi"
+date: "21/01/2020"
+output: html_document
+---
+
+This documnent was created as an attempt for checking for correctness of the research.
+We predict the score of a post given by reddit based on the attributes extracted by the analysis.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Let us initially call all the libraries required for the analysis 
+
+```{r calling all the libraries}
+#install.packages("tree")
+library(tree)
+#install.packages("e1071")
+library(e1071)
+#install.packages(("ROCR"))
+library(ROCR) 
+#install.packages("randomForest") 
+library(randomForest) 
+#install.packages("adabag")
+library(adabag)
+#install.packages("rpart")
+library(rpart)
+
+```
+
+The data is segregated into 2 parts as testing and training data sets.
+
+```{r Preprocess}
+
+#setwd('Desktop') setting the work directory to desktop
+#setting the number of significant digitd to 4
+options(digits=4)
+
+#Clearing the workspace
+rm(list = ls())
+
+#read the file
+
+#posts.train <- read.csv("DelltrainingDataAttributes.csv", header = TRUE)
+#posts.test <- read.csv("DelltestingDataAttributes.csv", header = TRUE)
+
+posts.train <- read.csv("LaptopsTrainingDataAttributes.csv", header = TRUE)
+posts.test <- read.csv("LaptopsTestingDataAttributes.csv", header = TRUE)
+
+
+#For 75th percentile
+#posts.train <- read.csv("75thPercentileDellTrainingDataAttributes.csv", header = TRUE)
+#posts.test <- read.csv("75thPercentileDellTestingDataAttributes.csv", header = TRUE)
+
+
+#All irrelevant attributes are being removed using from the data frame
+posts.train = posts.train[,-1]
+posts.train$author = NULL
+posts.train$month = NULL
+posts.train$id = NULL
+posts.train$created_utc = NULL
+
+```
+
+The accuracy of the model is affected by the biassness of the class.
+
+```{r CheckingForClassBiasness}
+#Get the propotion of classes to check for class biasnss
+posts.train.table = table(posts.train$Score)
+posts.train.table.prop = prop.table(posts.train.table)
+posts.train.table.prop
+
+```
+
+Here we see that data fall into classes in the given propotions.
+
+High    --  12%
+Low     --  80%
+Neutral --  7.4%
+
+We see that most of the instances fall into the class of "Low"
+
+Using Machine Learning algorithms we will now be predciting the score classs for posts.
+
+1. DECISION TREES
+```{r Decision Trees}
+
+#Fit the data into a decision tree
+#The  target variable is score
+
+posts.decisionTree.fit <- tree(posts.train$Score ~ ., data = posts.train)
+plot(posts.decisionTree.fit)
+text(posts.decisionTree.fit, pretty = 0)
+
+summary(posts.decisionTree.fit)
+
+#Decision Tree
+cat("\n#Decision Tree Confusion\n")
+posts.predtree = predict(posts.decisionTree.fit, posts.test, type = "class")
+posts.predtree
+DT_table=table(Predicted_Class = posts.predtree,Actual_Class = posts.test$Score)
+
+
+DT_accuracy = sum(diag(DT_table))/sum(DT_table)
+cat("Accuracy of Decision Tree is  ", round(DT_accuracy, 4)*100, "% ")
+
+```
+
+2. NAIVE BAYES
+```{r Naive Bayes }
+
+# Clasification for Naive Bayes model for  data set
+posts.train.naive_bayes = naiveBayes(posts.train$Score ~. , data =posts.train)
+posts.train.naive_bayes
+summary(posts.train.naive_bayes)
+
+cat("\n#NaiveBayes Confusion\n")
+posts.predbayes = predict(posts.train.naive_bayes, posts.test)
+NB_table = table(Predicted_Class = posts.predbayes, Actual_Class = posts.test$Score)
+NB_table
+
+#accuracy
+NB_accuracy = sum(diag(NB_table))/sum(NB_table)
+NB_accuracy
+cat("Accuracy of Naive Bayes is  ", round(NB_accuracy, 4)*100, "% ")
+```
+
+3. BAGGING
+```{r BAGGING}
+## Classification for Bagging model for WAUS data set
+posts.bagging = bagging(Score ~ ., data = posts.train)
+summary(posts.bagging)
+
+##Bagging
+cat("\n#Bagging confusion\n")
+posts.predbag <- predict.bagging(posts.bagging, posts.test)
+BG_table = posts.predbag$confusion
+BG_table
+
+# #Accuracy
+BG_accuracy =sum(diag(BG_table))/sum(BG_table)
+cat("Accuracy of Bagging is  ", round(BG_accuracy, 4)*100, "% ")
+```
+
+4. BOOSTING
+```{r Boosting}
+
+# #Boosting
+posts.boosting = boosting(Score ~., data = posts.train)
+
+cat("\n#Boosting confusion\n")
+posts.predboost <- predict.boosting(posts.boosting, newdata=posts.test)
+
+BT_table=posts.predboost$confusion
+BT_table
+
+
+#Accuracy
+BT_accuracy = sum(diag(BT_table))/sum(BT_table)
+cat("Accuracy of Boosting is  ", round(BT_accuracy, 4)*100, "% ")
+
+```
+
+5.RANDOM FOREST
+```{r RandomForest}
+
+# posts.train <- read.csv("DelltrainingDataAttributes.csv", header = TRUE)
+# posts.test <- read.csv("DelltestingDataAttributes.csv", header = TRUE)
+# 
+# 
+# #All irrelevant attributes are being removed using from the data frame
+# posts.train = posts.train[,-1]
+# posts.train$author = NULL
+# posts.train$month = NULL
+# posts.train$id = NULL
+# posts.train$created_utc = NULL
+# posts.train$Score_Of_Comments = NULL
+
+posts.random_forest = randomForest(Score ~., data = posts.train)
+posts.random_forest
+
+#Random Forest
+cat("\n#Random Forest Confusion\n")
+posts.predrf <- predict(posts.random_forest, posts.test)
+
+RF_table =table(Predicted_Class = posts.predrf, Actual_Class = posts.test$Score)
+RF_table
+
+#Accuracy
+RF_accuracy = sum(diag(RF_table))/sum(RF_table)
+cat("Accuracy of Random Forest is  ", round(RF_accuracy, 4)*100, "% ")
+
+
+```
+
+Linking with influencers
+```{r linking}
+
+#CHECKING FOR GROUND TRUTH
+
+posts_GT = cbind(posts.test, posts.predtree)
+
+library(dplyr)
+
+#extracting Score == high
+#score_based = posts_GT %>%filter(Score == "High")
+
+
+influencers = posts_GT %>%filter(author %in% c("Jam750","ArieTofeq17","mojomonday","trundle42","VantagePointLLC","c0dist_","phamio23","biglordtitan","JellyFishIceCream","w921","jmeush","Wulmar","hossamdex","fickknecht6688"))
+
+
+grouped = influencers %>% filter(Score == "High")
+grouped
+
+```
+
+Class Wise Accuracy
+
+```{r classWise Accuracy}
+
+#Accuracy of the high class
+postsDF = cbind(posts.test, posts.predtree)
+grouped_high = postsDF %>% filter(Score == "High")
+grouped_high
+high.table = table(grouped_high$posts.predtree)
+high.table
+high.prop = prop.table(high.table)
+high.prop
+
+#Accuracy of the Low class
+postsDF = cbind(posts.test, posts.predtree)
+grouped_low = postsDF %>% filter(Score == "Low")
+grouped_low
+low.table = table(grouped_low$posts.predtree)
+low.table
+low.prop = prop.table(low.table)
+low.prop
+
+#Accuracy of the neutral class
+postsDF = cbind(posts.test, posts.predtree)
+grouped_neutral = postsDF %>% filter(Score == "neutral")
+grouped_neutral
+nu.table = table(grouped_neutral$posts.predtree)
+nu.table
+nu.prop = prop.table(nu.table)
+nu.prop
+```
+
+
