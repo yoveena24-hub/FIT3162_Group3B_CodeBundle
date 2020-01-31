@@ -68,7 +68,7 @@ def getstatistics(df,df2,df3,df4,df5,df6):
     print("----------------------Potential Clients----------------------")
     print("No of unique authors: " + str(df5['author'].nunique()))
     print("----------------------Influencers----------------------")
-    print("No of unique authors: " + str(df6['User_Name'].nunique()))
+    print("No of unique authors: " + str(df6['name'].nunique()))
 
 
 

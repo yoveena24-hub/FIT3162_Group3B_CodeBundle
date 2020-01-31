@@ -208,11 +208,12 @@ def influencer(hashtableClients, df_comments):
                 brand.append(df['subreddit'][ind])
                 category.append('Laptop')
     df1 = pd.DataFrame()
-    df1['Category'] = category
-    df1['Brand'] = brand
-    df1['User_Name'] = userName
-    df1 = df1.drop(df1.columns[[0]], axis=1)
-    df1.to_csv('Influencers.csv')
+    df1['id'] = list(range(0, len(category)))
+    df1['category_id'] = category
+    df1['brand_id'] = brand
+    df1['name'] = userName
+    df1.to_csv('Influencers.csv',index=False)
+
 
 def positivityOfText(compound_score_list, value):
     """
@@ -278,10 +279,11 @@ def potentialClientsFile(df):
                 brand.append(df['subreddit'][ind])
                 category.append('Laptop')
     df1 = pd.DataFrame()
-    df1['Category'] = category
-    df1['Brand'] = brand
-    df1['User_Name'] = userName
-    df1.to_csv('potentialClients.csv')
+    df1['id'] = list(range(0, len(category)))
+    df1['category_id'] = category
+    df1['brand_id'] = brand
+    df1['name'] = userName
+    df1.to_csv('potentialClients.csv', index=False)
 
     # creating csv file to be used to find influencers
     df2 = df[df['author'].isin(hashtable)]
