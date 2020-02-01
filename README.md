@@ -18,6 +18,7 @@ The following instructions will guide you through the packages needed to install
 6. pip launched when set up pyCharm - pip can download and install other packages
 
 **Installing**
+
 In pyCharm , go to terminal and install the following packages:
 
 nltk : 'sudo pip3 install -U nltk', for usage of nltk corpora, visit https://www.educba.com/install-nltk/
@@ -30,18 +31,27 @@ pytest: 'pip install pytest'
 
 If you need to upgrade your current pip version: 'python -m pip install --upgrade pip' command.
 
-In R, go to console and install the following packages: tree, e1071, ROCR, randomForest, adabag, rpart using 'install.packages("package")'. A guideline has been provided in the R files.
+In RStudio, go to console and install the following packages: tree, e1071, ROCR, randomForest, adabag, rpart using 'install.packages("package")'. A guideline has been provided in the R file.
+
+Install R Markdown in Rstudio by visiting the link: https://rmarkdown.rstudio.com/authoring_quick_tour.html
 
 **Running the python program**
 
-
+1. Download all the folders in the repository
+2. If you have new reddit data sets, save them in the SourceFiles folder.
+3. Run main.py file 
+4. Each folder allocated will have the related csv files
 
 **Running the R program**
 
-In 
+1. In Evaluation -> MachineLearning folder, use the R file and the datasets.  
+2. In RStudio, go to File -> Open File.. Browse and click on the downloaded R file.
+3. Click on knit.
 
 **Built With**
 
+- TeamViewer
+- Github - Version control
 
 ###### Authors
 
