@@ -6,7 +6,7 @@ This project aims at reducing marketing cost by using sentiment analysis techniq
 
 **Getting Started**
 
-The following instructions will 
+The following instructions will guide you through the packages needed to install and will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 **Prerequisites**
 
@@ -15,16 +15,33 @@ The following instructions will
 3. Latest python version
 4. R 
 5. RStudio - Integrated development environment for R
+6. pip launched when set up pyCharm - pip can download and install other packages
 
 **Installing**
+In pyCharm , go to terminal and install the following packages:
 
-R libraries, python libraries
+nltk : 'sudo pip3 install -U nltk', for usage of nltk corpora, visit https://www.educba.com/install-nltk/
+
+pandas: 'pip install pandas'
+
+numpy: 'pip install numpy'
+
+pytest: 'pip install pytest'
+
+If you need to upgrade your current pip version: 'python -m pip install --upgrade pip' command.
+
+In R, go to console and install the following packages: tree, e1071, ROCR, randomForest, adabag, rpart using 'install.packages("package")'. A guideline has been provided in the R files.
 
 **Running the python program**
 
+
+
 **Running the R program**
 
+In 
+
 **Built With**
+
 
 ###### Authors
 
