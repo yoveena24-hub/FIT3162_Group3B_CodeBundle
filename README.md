@@ -16,6 +16,7 @@ The following instructions will guide you through the packages needed to install
 4. R 
 5. RStudio - Integrated development environment for R
 6. pip launched when set up pyCharm - pip can download and install other packages
+7. Web Browser (e.g google chrome) 
 
 **Installing**
 
@@ -47,6 +48,7 @@ Install R Markdown in Rstudio by visiting the link: https://rmarkdown.rstudio.co
 1. In Evaluation -> MachineLearning folder, use the R file and the datasets.  
 2. In RStudio, go to File -> Open File.. Browse and click on the downloaded R file.
 3. Click on knit.
+4. After running, an HTML page with the outcomes will open.
 
 **Built With**
 
