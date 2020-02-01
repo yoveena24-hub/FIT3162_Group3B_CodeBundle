@@ -43,6 +43,12 @@ Install R Markdown in Rstudio by visiting the link: https://rmarkdown.rstudio.co
 3. Run main.py file 
 4. Each folder allocated will have the related csv files
 
+**Running the pytest**
+
+1. Go to terminal
+2. cd to each directory
+3. Enter 'py.test' as command
+
 **Running the R program**
 
 1. In Evaluation -> MachineLearning folder, use the R file and the datasets.  
