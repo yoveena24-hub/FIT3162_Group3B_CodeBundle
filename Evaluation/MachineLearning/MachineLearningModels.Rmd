@@ -27,6 +27,7 @@ library(randomForest)
 library(adabag)
 #install.packages("rpart")
 library(rpart)
+library(gplots)
 
 ```
 
@@ -43,11 +44,14 @@ rm(list = ls())
 
 #read the file
 
-#posts.train <- read.csv("DelltrainingDataAttributes.csv", header = TRUE)
-#posts.test <- read.csv("DelltestingDataAttributes.csv", header = TRUE)
+posts.train <- read.csv("DellTrainingDataAttributes.csv", header = TRUE)
+posts.test <- read.csv("DellTestingDataAttributes.csv", header = TRUE)
 
-posts.train <- read.csv("LaptopsTrainingDataAttributes.csv", header = TRUE)
-posts.test <- read.csv("LaptopsTestingDataAttributes.csv", header = TRUE)
+#posts.train <- read.csv("LaptopsTrainingDataAttributes.csv", header = TRUE)
+#posts.test <- read.csv("LaptopsTestingDataAttributes.csv", header = TRUE)
+
+# posts.train <- read.csv("delltrain.csv", header = TRUE)
+# posts.test <- read.csv("delltest.csv", header = TRUE)
 
 
 #For 75th percentile
@@ -99,12 +103,37 @@ summary(posts.decisionTree.fit)
 #Decision Tree
 cat("\n#Decision Tree Confusion\n")
 posts.predtree = predict(posts.decisionTree.fit, posts.test, type = "class")
-posts.predtree
-DT_table=table(Predicted_Class = posts.predtree,Actual_Class = posts.test$Score)
 
+DT_table = table(Predicted_Class = posts.predtree,Actual_Class = posts.test$Score)
+DT_table
+rowsums = rowSums(DT_table)
 
-DT_accuracy = sum(diag(DT_table))/sum(DT_table)
+# number of instances per class
+
+colsums = colSums(DT_table) # number of predictions per class
+
+n = sum(DT_table)
+p = rowsums / n # distribution of instances over the actual classes
+q = colsums / n # distribution of instances over the predicted classes
+diag = diag(DT_table)
+
+DT_accuracy = sum(diag)/sum(DT_table)
 cat("Accuracy of Decision Tree is  ", round(DT_accuracy, 4)*100, "% ")
+
+precision = diag / colsums
+recall = diag / rowsums
+f1 = 2 * precision * recall / (precision + recall)
+data.frame(precision, recall, f1)
+
+cat("/Macro Averaging/n")
+
+macroPrecision = mean(precision)
+macroRecall = mean(recall)
+recall
+macroRecall
+macroF1 = mean(f1)
+data.frame(macroPrecision, macroRecall, macroF1)
+
 
 ```
 
@@ -121,10 +150,34 @@ posts.predbayes = predict(posts.train.naive_bayes, posts.test)
 NB_table = table(Predicted_Class = posts.predbayes, Actual_Class = posts.test$Score)
 NB_table
 
+rowsums = rowSums(NB_table)
+
+# number of instances per class
+
+colsums = colSums(NB_table) # number of predictions per class
+
+n = sum(NB_table)
+p = rowsums / n # distribution of instances over the actual classes
+q = colsums / n # distribution of instances over the predicted classes
+diag = diag(NB_table)
+
 #accuracy
 NB_accuracy = sum(diag(NB_table))/sum(NB_table)
 NB_accuracy
 cat("Accuracy of Naive Bayes is  ", round(NB_accuracy, 4)*100, "% ")
+
+precision = diag / colsums
+recall = diag / rowsums
+f1 = 2 * precision * recall / (precision + recall)
+data.frame(precision, recall, f1)
+
+cat("/Macro Averaging/n")
+
+macroPrecision = mean(precision)
+macroRecall = mean(recall)
+macroF1 = mean(f1)
+data.frame(macroPrecision, macroRecall, macroF1)
+
 ```
 
 3. BAGGING
@@ -139,9 +192,41 @@ posts.predbag <- predict.bagging(posts.bagging, posts.test)
 BG_table = posts.predbag$confusion
 BG_table
 
+rowsums = rowSums(BG_table)
+
+# number of instances per class
+
+colsums = colSums(BG_table) # number of predictions per class
+
+n = sum(BG_table)
+p = rowsums / n # distribution of instances over the actual classes
+q = colsums / n # distribution of instances over the predicted classes
+diag = diag(BG_table)
+
+
 # #Accuracy
 BG_accuracy =sum(diag(BG_table))/sum(BG_table)
 cat("Accuracy of Bagging is  ", round(BG_accuracy, 4)*100, "% ")
+
+precision = diag / colsums
+cat("\nPrecision of Bagging is\n")
+precision
+recall = diag / rowsums
+cat("\nRecall of Bagging is\n")
+recall
+f1 = 2 * precision * recall / (precision + recall)
+cat("\nf1 of Bagging is\n")
+f1
+
+cat("/Macro Averaging/n")
+
+macroPrecision = mean(precision)
+macroRecall = mean(recall)
+macroF1 = mean(f1)
+data.frame(macroPrecision, macroRecall, macroF1)
+
+
+#data.frame(precision, recall, f1)
 ```
 
 4. BOOSTING
@@ -168,8 +253,8 @@ cat("Accuracy of Boosting is  ", round(BT_accuracy, 4)*100, "% ")
 
 # posts.train <- read.csv("DelltrainingDataAttributes.csv", header = TRUE)
 # posts.test <- read.csv("DelltestingDataAttributes.csv", header = TRUE)
-# 
-# 
+#
+#
 # #All irrelevant attributes are being removed using from the data frame
 # posts.train = posts.train[,-1]
 # posts.train$author = NULL
@@ -209,10 +294,42 @@ library(dplyr)
 
 
 influencers = posts_GT %>%filter(author %in% c("Jam750","ArieTofeq17","mojomonday","trundle42","VantagePointLLC","c0dist_","phamio23","biglordtitan","JellyFishIceCream","w921","jmeush","Wulmar","hossamdex","fickknecht6688"))
+influencers
+nrow(influencers)
+
+#Influnecers that have a high predicted score
+grouped_high = influencers %>% filter(posts.predtree == "High")
+grouped_high
+nrow(grouped_high)
+
+#Influnecers that have a low predicted score
+grouped_low = influencers %>% filter(posts.predtree == "Low")
+grouped_low
+nrow(grouped_low)
+
+#Influnecers that have a neutral predicted score
+grouped_nu = influencers %>% filter(posts.predtree == "neutral")
+grouped_nu
+nrow(grouped_nu)
+
+# actual Score
+
+#Influnecers that have a high predicted score
+grouped_high = influencers %>% filter(Score == "High")
+grouped_high
+nrow(grouped_high)
+
+#Influnecers that have a low predicted score
+grouped_low = influencers %>% filter(Score == "Low")
+grouped_low
+nrow(grouped_low)
+
+#Influnecers that have a neutral predicted score
+grouped_nu = influencers %>% filter(Score == "neutral")
+grouped_nu
+nrow(grouped_nu)
 
 
-grouped = influencers %>% filter(Score == "High")
-grouped
 
 ```
 
@@ -223,7 +340,7 @@ Class Wise Accuracy
 #Accuracy of the high class
 postsDF = cbind(posts.test, posts.predtree)
 grouped_high = postsDF %>% filter(Score == "High")
-grouped_high
+#grouped_high
 high.table = table(grouped_high$posts.predtree)
 high.table
 high.prop = prop.table(high.table)
@@ -232,7 +349,7 @@ high.prop
 #Accuracy of the Low class
 postsDF = cbind(posts.test, posts.predtree)
 grouped_low = postsDF %>% filter(Score == "Low")
-grouped_low
+#grouped_low
 low.table = table(grouped_low$posts.predtree)
 low.table
 low.prop = prop.table(low.table)
@@ -241,7 +358,7 @@ low.prop
 #Accuracy of the neutral class
 postsDF = cbind(posts.test, posts.predtree)
 grouped_neutral = postsDF %>% filter(Score == "neutral")
-grouped_neutral
+#grouped_neutral
 nu.table = table(grouped_neutral$posts.predtree)
 nu.table
 nu.prop = prop.table(nu.table)
